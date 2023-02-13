@@ -1,0 +1,22 @@
+//用递归方法写程序时会出现不少问题，如：
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+void test(int n)
+{
+	if (n < 10000)
+		test(n + 1);
+}
+
+int main()
+{
+	test(1);
+	return 0;
+}
+//此程序也会栈溢出（即证得 满足两个必要条件的递归也会出现栈溢出）
+
+//笔记：
+//用递归编程时，不能存在栈溢出和效率低下的问题
+//如果有，就换循环写

@@ -1,0 +1,56 @@
+//提示 斐波那契数列：1 1 2 3 5 8 13 21 34 55...（第n个数等于第n-1个数和第n-2个数之和）
+ 
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int count = 0;
+
+int Fib(int n)//递归——不合适，效率很低
+{
+	if (n == 3)
+		count++;//测试第三个斐波那契数被重复计算了多少次，可证其计算量之大
+	if (n == 1 || n == 2)
+		return 1;
+	else
+		return Fib(n - 1) + Fib(n - 2);
+}//（从尾倒推的）
+
+int Fib2(int n)//循环——效率很高（计算速度快，可以输入50尝试）  666
+{
+	int a = 1, b = 1, c = 1;//int c=1当n <=2 时就没问题了
+	while (n>2)
+	{                        // 1 1 2 3 5 8 13 21  //第一次：a=1,b=1,c=a+b=2
+		c = a + b;          //第二次：全体往右移一个数：a=1(a=b),b=2(b=c),c=a+b=3
+		a = b;             //以此类推...不用重复计算（从头开始的计算）
+		b = c;
+		n--;
+	}
+		return c;
+}
+
+int main()
+{
+	int n = 0;
+	int ret = 0;
+	scanf("%d", &n);
+	
+	ret = Fib(n);
+	printf("递归：第%d个斐波那契数是：%d\n", n, ret);
+	printf("count=%d\n", count);
+	
+	printf("循环：第%d个斐波那契数是：%d\n",n, Fib2(n));
+	return 0;//运用方法：TDD-测试驱动开发（先写出main中的内容，然后再具体开发Fib函数）
+}
+
+//递归：
+//若输入50
+//   49   48
+//  48  47 47 46
+//47 46 46 45 46 45 45 44
+//有很多重复计算的地方，计算量很大，效率低
+
+
+

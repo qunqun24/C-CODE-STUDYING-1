@@ -1,0 +1,48 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()//优化版
+{
+	int n = 0;
+	int k = 0;
+	int m = 1;
+	int sum = 0;
+	scanf("%d", &n);
+	for (k = 1; k <= n; k++)//已知 2!=1!*2; 3!=2!*3;……，可以简化为一个for循环
+	{
+		m = m * k;
+		sum = sum + m;
+	}
+	printf("sum=%d\n", sum);
+	return 0;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+/*#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()//经典版——循环嵌套
+{
+	int n = 0;
+	int m = 1;
+	int i = 1;
+	int k = 1;
+	int sum = 0;
+	scanf("%d", &n);
+	for (k = 1; k <= n;k++)
+	{
+		for (i = 1; i <= k; i++)
+		{
+			m *= i;
+		}//求阶乘
+		sum += m;//相加
+		m = 1;//将m每次恢复至1，防止已经被赋值的m在下次循环仍参与计算
+	 }
+	printf("sum=%d", sum);
+	return 0;
+}*/

@@ -1,0 +1,37 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int Fac1(int n)//经典版——循环
+{
+	int i = 0;
+	int ret = 1;
+	for (i = 1; i <= n; i++)
+	{
+		ret *= i;
+	}
+	return ret;
+}
+
+int Fac2(int n)//优化版——递归
+{
+	if (n > 1)
+		return n * Fac2(n - 1);
+	else
+		return 1;
+}
+
+int main()
+{
+	int n = 0;
+	int ret1 = 0, ret2 = 0;
+	scanf("%d", &n);
+	
+	ret1 = Fac1(n);
+	printf("循环：Fac1(%d)=%d\n", n, ret1);
+	
+	ret2 = Fac2(n);
+	printf("递归：Fac2(%d)=%d\n", n, ret2);
+	
+	return 0;
+}

@@ -1,0 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS//忽略scanf等函数的不安全警告
+
+#include<stdio.h>
+
+int main()
+{
+	int ret = 0;
+	int ch = 0;
+	char password[20] = { 0 };
+	printf("请输入密码：");
+	scanf("%s", &password);
+	while ((ch = getchar()) != '\n')
+	{
+		;
+	}//输入缓冲区还剩东西（如：' ABCD \n'等等）,都要读取掉（用循环）
+	printf("请确认：（Y/N）");
+	ret = getchar();
+	if (ret == 'Y')
+		printf("确认成功！");
+	else
+		printf("放弃确认");
+	return 0;
+}

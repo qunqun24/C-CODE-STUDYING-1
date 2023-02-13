@@ -1,0 +1,88 @@
+//问题1：一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int Frog1(int n)
+{
+	if (n == 0)
+		return 0;
+    if (n == 1)
+		return 1;
+	if (n == 2)
+		return 2;
+	else
+		return Frog1(n - 1) + Frog1(n - 2);
+}//1 2 3 5 8 不就是斐波那契数列吗？
+
+int Frog2(int n)//所以可以用循环优化
+{
+	int a = 1, b = 1, c = 1;
+	if (n == 2)
+		return 2;
+	while (n+1 > 2)
+	{
+		c = a + b;
+		a = b;
+		b = c;
+		n--;
+	}
+	return c;
+}
+
+int main()
+{
+	int n = 0;
+	int ret = 0;
+	scanf("%d", &n);
+	ret = Frog1(n);
+	printf("1.递归：有%d级台阶，有%d种跳法\n",n,ret);
+
+	printf("2.循环：有%d级台阶，有%d种跳法", n, Frog2(n));
+	return 0;
+}
+
+
+
+//问题2：一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
+
+//f(n)   = f(0) + f(1) + f(2) + f(3) + ... + f(n-2) + f(n-1)
+//f(n-1) = f(0) + f(1) + f(2) + f(3) + ... + f(n-2)
+    
+//相减得  f(n)=2*f(n-1)
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int Frog3(int n)
+{
+	if (n == 1)
+		return 1;
+	else
+		return 2 * Frog3(n - 1);
+}
+
+int main()
+{
+	int n = 0;
+	int ret = 0;
+	scanf("%d", &n);
+	ret = Frog3(n);
+	printf("有%d种方法\n",ret);
+	return 0;
+}
+
+
+
+//问题3：一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个m级的台阶总共有多少种跳法。
+
+
+引用原文的解法好像有问题，我也搞不懂怎么解，暂时放一下
+
+
+
+
+//引用：https://blog.csdn.net/zhangshk_/article/details/81148340

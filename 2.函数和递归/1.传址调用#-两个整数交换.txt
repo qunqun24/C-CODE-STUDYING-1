@@ -1,0 +1,30 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+void Swap1(int x,int y)//-传值调用
+{
+	int tmp1 = 0;
+	tmp1 = x;
+	x = y;
+	y = tmp1;
+}//错误
+void Swap2(int* pa, int* pb)//-传址调用
+{
+	int tmp2 = 0;
+	tmp2 = *pa;
+	*pa = *pb;
+	*pb = tmp2;
+}//正确
+int main()
+{
+	int a = 10;
+	int b = 20;
+	Swap1(a, b);
+	printf("Swap1:a=%d,b=%d\n", a, b);//无法起到交换，因为a,b虽然将值赋给函数变量x,y，但是a,b与x,y地址并不相同，它们没关系
+	Swap2(&a, &b);
+	printf("Swap2:a=%d,b=%d\n", a, b);//用指针解决这个问题，通过地址找到a,b
+	return 0;
+}
+
+//当实参传给形参的时候，形参其实是实参的一份临时拷贝，对形参的修改是不会改变实参的。

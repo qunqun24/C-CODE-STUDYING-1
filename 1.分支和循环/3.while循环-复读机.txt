@@ -1,0 +1,14 @@
+#define _CRT_SECURE_NO_WARNINGS//忽略scanf等函数的不安全警告
+
+#include<stdio.h>
+
+int main()
+{
+	int ch = 0;//用ch=getchar();会等待你按下任意键之后，把该键字符所对应的ASCII码赋给ch,再执行下面的语句。
+	while ((ch = getchar()) != EOF)//end of file （值是-1）
+
+	{
+		putchar(ch);//比较像 printf("%c",ch); 而putchar较简洁
+	}//输入Ctrl+Z+回车即可结束程序
+	return 0;
+}

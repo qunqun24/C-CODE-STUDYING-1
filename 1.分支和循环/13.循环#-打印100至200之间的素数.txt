@@ -1,0 +1,57 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+#include<math.h>//sqrt函数头文件
+
+int main()//优化版（缩小试除的范围以提高效率）——思想：1.若i=a*b,那么a和b中至少有一个<=开平方i 2.偶数不可能是素数 666
+{
+	int n, i = 0;
+	int count = 0;
+	for (n = 101; n <=200; n+=2)//去掉偶数
+	{
+		for (i = 2; i <=sqrt(n); i++)//所以可以缩小到开平方n
+		{
+			if (n % i == 0)
+				break;
+		}
+		if (i > sqrt(n))//sqrt-数学库函数-开平方
+		{
+			count++;
+			printf("%d ", n);
+		}
+	}
+	printf("\ncount=%d\n", count);//计数
+	return 0;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+/*#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()//经典版 —— 试除法
+{
+	int n, i = 0;
+	int count=0;
+	for (n = 100; n <= 200; n++)
+	{
+		for (i = 2; i < n; i++)
+		{
+			if (n % i == 0)
+				break;
+		}
+		if (i == n)
+		{
+			count++;
+			printf("%d ", n);	
+		}
+	}
+	printf("\ncount=%d\n", count);//计数
+	return 0;
+}*/
+
+
+

@@ -1,0 +1,18 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()
+{
+	int arr[] = { -1,-2,-3,-4,-5,-6,-7,-8,-9,-10 };
+	int max = arr[0];//把arr[0]赋值给max,然后让后面的每一个数和它比较，比arr[0]大的就继续赋给max...不断更新
+	int i = 0;
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	for (i = 0; i < sz; i++)
+	{
+		if (arr[i] > max)
+			max = arr[i];
+	}
+	printf("max=%d", max);
+	return 0;
+}

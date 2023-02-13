@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS//忽略scanf等函数的不安全警告
+
+#include<stdio.h>
+int main()
+{
+	double day = 0;
+	int c = 0;
+	printf("请输入1-7的整数：\n");
+	c = scanf("%lf", &day);
+	if (c == 1 && ((day == 1 || day == 2 || day == 3 || day == 4 || day == 5 || day == 6 || day == 7) == 1))
+	{
+		switch (int(day))
+		{
+		case 1://case后为整形常量表达式
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+			printf("工作日\n");
+			break;//用break跳出switch语句
+		default:
+			printf("休息日\n");
+			break;
+		}
+	}
+	else 
+		printf("Error!");
+	return 0;
+}

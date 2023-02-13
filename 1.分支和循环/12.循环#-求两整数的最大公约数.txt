@@ -1,0 +1,22 @@
+//方法：辗转相除法 —— 例：m=24,n=18 m%n=6 n%6=0 当摸为0 则6是m和n的最大公约数
+
+
+//解：
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()
+{
+	int m = 0, n = 0;
+	int r = 0;
+	scanf("%d%d", &m, &n);
+	while (r=m % n)//m%n==0时跳出循环，m%n!=0时继续
+	{
+		//r = m % n;//此步骤已简化至while(r=m%n)中,为了方便理解，还是放在这
+		m = n;
+		n = r;
+	}
+	printf("%d\n", n);
+	return 0;
+}

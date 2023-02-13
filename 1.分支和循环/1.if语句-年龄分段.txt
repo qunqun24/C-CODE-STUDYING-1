@@ -1,0 +1,30 @@
+#define _CRT_SECURE_NO_WARNINGS//忽略scanf等函数的不安全警告
+
+#include<stdio.h>
+int main()
+{
+	int age=0,c=0;
+	printf("请输入年龄：（数字）\n");
+	c=scanf("%d", &age);//解决了scanf返回值被忽略的警告
+	if (c == 1)
+	{
+		if (age >= 0 && age < 18)
+		{
+			printf("未成年\n");
+			printf(" ");
+		}//if后有多条语句需要用代码块形式，否则else会与最近的未匹配if进行匹配
+		else if (age >= 18 && age < 28)
+			printf("青年\n");
+		else if (age >= 28 && age < 50)
+			printf("壮年\n");
+		else if (age >= 50 && age < 90)
+			printf("老年\n");
+		else if (age >= 90)
+			printf("666\n");
+		else 
+			printf("Error!\n");
+	}
+	else
+		printf("Error!\n");
+ return 0;
+}
