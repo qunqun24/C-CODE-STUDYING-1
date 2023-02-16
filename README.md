@@ -5,7 +5,7 @@ C语言基础案例
 
 Branches：
 
-0.games(1*txt)
+0.games#（1*txt）
 
 1.分支和循环（17*txt）
 
