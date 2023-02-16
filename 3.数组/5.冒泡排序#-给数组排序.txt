@@ -1,0 +1,43 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+void bubble_sort(int arr[],int sz)//如果arr传参传的不是地址，那么传址调用应该用int*arr才对
+{
+	int i = 0;
+	
+	for (i = 0; i < sz - 1; i++)//确定冒泡排序的趟数
+	{
+		int flag = 1;//优化：假设这一趟排序的数据已经有序
+		
+		int j = 0;
+		for (j = 0; j < sz-i-1; j++)//每趟需要比较的次数
+		{
+			if (arr[j] > arr[j + 1])//冒泡排序，相邻数比较、交换
+			{
+				int tmp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = tmp;
+				
+				flag = 0;//优化：本趟排序的数据其实不完全有序
+			}
+		}
+		if (flag == 1)
+			break;//优化：说明这一趟的数据就是有序的，直接跳出//这个break其实是在for循环中，所以可以用
+	}
+}//不加flag判断是否有序会使效率比较低：若数组已经有序，那就浪费了
+
+int main()
+{
+	int arr[] = {9,8,7,6,5,4,3,2,1,0};
+	int i = 0;
+	int sz = sizeof(arr) / sizeof(arr[0]);//传参是传的首元素地址，所以不能放在以上函数内部
+	
+	bubble_sort(arr,sz);//对arr进行排序，排成升序
+	
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d ", arr[i]);
+	}//打印arr
+	return 0;
+}

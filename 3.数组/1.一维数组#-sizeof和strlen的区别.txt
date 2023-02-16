@@ -1,0 +1,20 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+#include<string.h>//strlen函数头文件
+
+int main()
+{
+	char arr1[] = "abc";        //有‘\0’
+	char arr2[] = {'a','b','c'};//无‘\0’
+   
+	//sizeof是操作符，计算对象所占空间大小
+	printf("sizeof(arr1)=%lld\n", sizeof(arr1));//4
+	printf("sizeof(arr2)=%lld\n", sizeof(arr2));//3
+	
+	//strlen是库函数，只能求字符串长度（读到‘\0’，且‘\0’不算在内）
+	printf("strlen(arr1)=%lld\n", strlen(arr1));//3
+	printf("strlen(arr2)=%lld\n", strlen(arr2));//随机值
+	
+	return 0;
+}
