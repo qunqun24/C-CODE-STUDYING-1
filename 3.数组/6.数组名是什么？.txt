@@ -1,0 +1,31 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()
+{
+	int arr[] = {1,2,3,4,5};
+	printf("sizeof(arr):%d\n", (int)sizeof(arr));
+	printf("sizeof(arr[0]):%d\n", (int)sizeof(arr[0]));
+	printf("\n");
+	//特例1：sieof(arr)中的arr代表整个数组
+
+	printf("arr:%p\n", arr);
+	printf("&arr[0]:%p\n", &arr[0]);
+	//结果一致，说明数组名代表首元素地址。
+
+	printf("*arr:%d\n", *arr);
+	//检验：解引用得出结果为首元素1 ，说明数组名代表首元素地址。
+	printf("\n");
+
+	printf("&arr:%p\n", &arr);
+	//特例2：结果也一致，但是&arr含义有别
+	printf("&arr+1:%p\n", &arr+1);
+	printf("\n");
+	//增加了20 刚好是arr的字节数
+
+	printf("arr:%p\n", arr);
+	printf("arr+1:%p\n", arr+1);
+	//增加了4 刚好是一个int元素的字节数
+	//说明 arr 与 &arr 不同 ，即arr是数组首元素的地址，而&arr是数组的地址
+}
