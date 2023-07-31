@@ -1,0 +1,13 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()
+{
+	char c = 1;//%u:无符号十进制整数
+	printf("%u ", sizeof(c));//1
+	printf("%u ", sizeof(+c));//4  c只要参与表达式运算就会发生整型提升
+	printf("%u ", sizeof(!c));//1 有一点争议 暂不确定
+	//chatgpt:sizeof(!c)会返回逻辑非表达式的大小，即一个字节，因为布尔值在内存中一般占用一个字节的存储空间。
+	return 0;
+}

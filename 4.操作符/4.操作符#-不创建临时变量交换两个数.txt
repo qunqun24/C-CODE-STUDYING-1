@@ -1,0 +1,32 @@
+//问：不能创建临时变量（第三个变量），实现两个数的交换
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()
+{
+	int a = 3;
+	int b = 5;
+	printf("before:a=%d,b=%d\n", a, b);
+
+	//加减法(可能会溢出)
+	a = a + b;//这一步有可能会超出整形的最大值
+	b = a - b;
+	a = a - b;
+	printf("after :a=%d,b=%d\n", a, b);
+
+	printf("\n");
+
+	a = 3;
+	b = 5;
+	printf("before:a=%d,b=%d\n", a, b);
+
+	//异或法 666 但是执行效率比创建临时变量的方法低 可读性也不高
+	a = a ^ b;
+	b = a ^ b;
+	a = a ^ b;
+	printf("after :a=%d,b=%d\n", a, b);
+	return 0;
+}
+

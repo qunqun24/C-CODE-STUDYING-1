@@ -1,0 +1,12 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()
+{
+	short s = 0;
+	int a = 0;
+	printf("%lld\n", sizeof(s = a + 5));//2    a+5赋给s,即计算sizeof(s)
+	printf("%d\n", s);//0   sizeof后的表达式不参与运算
+	return 0;
+}

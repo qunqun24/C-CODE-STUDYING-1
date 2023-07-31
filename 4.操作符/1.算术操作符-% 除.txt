@@ -1,0 +1,19 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()
+{
+	int a = 5 / 2;
+	printf("int a = 5 / 2 = %d\n", a);
+
+	float b = 5.0 / 2;
+	printf("float b = 5.0 / 2 = %f\n", b);
+
+	double c = 5 / 2.0;
+	printf("double c = 5 / 2.0 = %lf\n", c);
+
+	//int d = 5 % 2.0; 
+	//会报错 两边只能整数
+	return 0;
+}

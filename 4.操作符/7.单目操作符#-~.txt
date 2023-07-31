@@ -1,0 +1,13 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()
+{
+	int a = 11;//1011
+	a = a | (1 << 2);//1111 将第三位从0变1
+	printf("%d\n", a);
+	a = a & (~(1 << 2));//1011 改回去 从1变0
+	printf("%d\n", a);
+	return 0;
+}

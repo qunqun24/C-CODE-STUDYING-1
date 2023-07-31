@@ -1,0 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+struct Stu
+{
+	char name[20];
+	int age;
+	char id[20];
+};
+
+int main()
+{
+	struct Stu s1 = { "张三",20,"20230730qq" };
+	struct Stu* ps = &s1;//地址
+	printf("%s\n",s1.name);//或 printf("%s\n",(*ps).name);  或
+	printf("%s\n", ps->name);//ps 所指向的对象的成员name
+	printf("%d\n", s1.age);
+	printf("%s\n", s1.id);
+	return 0;
+}

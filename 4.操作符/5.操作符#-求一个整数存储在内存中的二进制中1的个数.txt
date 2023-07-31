@@ -1,0 +1,55 @@
+//问：求一个整数存储在内存中的二进制中1的个数
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()//一个更优的解法，但很难想到
+{
+	int num = 0;
+	int i = 0;
+	int count = 0;
+	scanf("%d", &num);
+	while (num)
+	{
+		count++;
+		num = num & (num - 1);
+	}
+	printf("%d\n", count);
+	return 0;
+}
+
+/*int main()//输入-1 出32（解决bug）
+{
+	int num = 0;
+	int count = 0;
+	int i = 0;
+	scanf("%d", &num);
+	for (i = 0; i < 32; i++)
+	{
+		if (1 == ((num >> i) & 1))//原数若最后一位为1，则num&1=1
+		{
+			count++;
+		}
+	}
+	printf("%d\n", count);
+	return 0;
+}*/
+
+/*int main()
+{
+	//这种方法输入负数时出bug
+	int num = 0;
+	int count = 0;
+	scanf("%d", &num);
+	while (num)
+	{
+		if (num % 2 == 1)
+		{
+			count++;
+		}
+		num = num / 2;
+	}
+	printf("%d\n", count);
+	return 0;
+}*/

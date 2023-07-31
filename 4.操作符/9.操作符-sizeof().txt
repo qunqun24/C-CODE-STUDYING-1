@@ -1,0 +1,22 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+void test1(int arr[]) 
+{
+	printf("3:%lld\n", sizeof(arr));//8 指针
+}
+void test2(char ch[]) 
+{
+	printf("4:%lld\n", sizeof(ch));//8
+}
+int main()
+{
+	int arr[10] = {0}; 
+	char ch[10] = {0}; 
+	printf("1:%lld\n", sizeof(arr));//40
+	printf("2:%lld\n", sizeof(ch));//10 特例：arr代表整个数组
+	test1(arr);
+	test2(ch);
+	return 0;
+}

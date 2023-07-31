@@ -1,0 +1,31 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()
+{
+	//&
+	int a = 3;
+	//011
+	int b = 5;
+	//101
+	int c = a & b;//001
+	printf("int c = %d & %d = %d\n", a, b, c);//输出1
+
+	//|
+	int a1 = 3;
+	//011
+	int b1 = 5;
+	//101
+	int c1 = a | b;//111
+	printf("int c1 = %d | %d = %d\n", a1, b1, c1);//输出7
+
+	//^(相同为0 相异为1)
+	int a2 = 3;
+	//011
+	int b2 = 5;
+	//101
+	int c2 = a ^ b;//110
+	printf("int c2 = %d ^ %d = %d\n", a2, b2, c2);//输出6
+	return 0;
+}

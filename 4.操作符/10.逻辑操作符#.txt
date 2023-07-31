@@ -1,0 +1,27 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()
+{
+	int i = 0, a = 0, b = 2, c = 3, d = 4;
+	i = a++ && ++b && d++; //a++先使用再加 a=0 &&只要左边0 右边就不再计算
+	printf("a = %d\n b =%d\n c = %d\nd = %d\n", a, b, c, d);// 所以只有a自增1 输出：1 2 3 4
+	return 0;
+}
+
+/*int main()
+{
+	int i = 0, a = 1, b = 2, c = 3, d = 4;
+	i = a++ && ++b && d++;
+	printf("a = %d\n b =%d\n c = %d\nd = %d\n", a, b, c, d);//a b d均自增 输出：2 3 3 5
+	return 0;
+}*/
+
+/*int main()
+{
+	int i = 0, a = 1, b = 2, c = 3, d = 4;
+	i = a++ || ++b || d++;  //逻辑或也是同理
+	printf("a = %d\n b =%d\n c = %d\nd = %d\n", a, b, c, d);//只有a自增 2 2 3 4
+	return 0;
+}*/

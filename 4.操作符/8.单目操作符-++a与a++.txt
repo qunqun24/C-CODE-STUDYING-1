@@ -1,0 +1,14 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+int main()
+{
+	int a = 10;
+	int b = 10;
+	printf("++a:%d\n", ++a);//前置++，先++，后使用
+	
+	printf("b++:%d\n", b++);//后置++，先使用，后++
+	printf("after b:%d\n", b);
+	return 0;
+}
