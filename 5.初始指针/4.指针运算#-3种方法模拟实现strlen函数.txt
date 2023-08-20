@@ -1,0 +1,75 @@
+#define _CRT_SECURE_NO_WARNINGS //指针运算方法：指针-指针
+
+#include<stdio.h>
+
+int my_strlen(char* str)
+{
+	char* start = str;
+	char* end = str;
+	while (*end != '\0')
+	{
+		end++;
+	}
+	return end - start;
+}
+
+int main()
+{
+	char arr[] = "bit";
+	int len = my_strlen(arr);
+	printf("%d\n", len);
+	return 0;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+#define _CRT_SECURE_NO_WARNINGS //递归方法
+
+#include<stdio.h>
+
+int my_strlen(char* str)//优化版 —— 未创建临时变量
+{
+	if (*str != '\0')//判断第一个元素是否是‘\0’（条件）
+		return 1 + my_strlen(str + 1);//递归计算长度
+	else
+		return 0;
+}
+
+int main()
+{
+	char arr[] = "bit";
+	//模拟实现了一个strlen函数
+	int len = my_strlen(arr);//arr传参传过去的是第一个元素的地址
+	printf("len=%d\n", len);
+	return 0;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+#define _CRT_SECURE_NO_WARNINGS //计数器方法
+
+#include<stdio.h>
+
+int my_strlen(char*str)//经典版 —— 创建了临时变量
+{
+	int count = 0;
+	while(*str != '\0')//循环
+	{
+		count++;
+		str++;
+	}
+	return count;
+}
+
+int main()
+{
+	char arr[] = "bit";
+	//模拟实现了一个strlen函数
+	int len = my_strlen(arr);//arr传参传过去的是第一个元素的地址
+	printf("len=%d\n", len);
+	return 0;
+}
