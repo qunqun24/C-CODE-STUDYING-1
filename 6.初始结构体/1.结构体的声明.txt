@@ -1,0 +1,38 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+/*
+声明的基本结构
+struct tag 
+{
+	member-list;
+}varible-list;
+
+*/
+
+//struct:结构体关键字  Stu:结构体标签  struct Stu:结构体类型
+//第一种写法
+struct Stu//定义一个结构体类型（没有占据内存空间，只是类型(如int)）
+{
+	char name[20];
+	short age;
+	char tele[12];
+	char sex[5];
+}s1, s2, s3;//s1,s2,s3是三个全局的结构体变量（尽量不用，尽量少的去创建全局变量）
+
+//第二种写法
+typedef struct Teather//typedef给struct Teather重新取名为Tea
+{
+	char name[20];
+	short age;
+	char tele[12];
+	char sex[5];
+}Tea;
+
+int main()
+{
+	struct Stu s1;//创建结构体变量（这里的s1是局部变量）
+	Tea s2;
+	return 0;
+}

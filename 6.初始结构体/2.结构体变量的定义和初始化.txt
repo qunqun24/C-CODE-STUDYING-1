@@ -1,0 +1,32 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+struct Stu
+{
+	char name[20];
+	short age;
+	char tele[12];
+	char sex[5];
+}s1, s2, s3;//定义了三个全局变量s1,s2,s3
+
+typedef struct Teather
+{
+	char name[20];
+	short age;
+	char tele[12];
+	char sex[5];
+}Tea;
+
+int main()
+{
+	struct Stu s1 = {"张三",20,"17551107817","男"};//创建结构体变量s1及初始化
+	Tea s2;//创建结构体变量s2
+
+	//打印
+	printf("%s\n", s1.name);//张三
+	printf("%d\n", s1.age);//20
+	printf("%s\n", s1.tele);//17551107817
+	printf("%s\n", s1.sex);//男
+	return 0;
+}
