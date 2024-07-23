@@ -1,0 +1,78 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+#include<assert.h>//assert头文件
+
+/*优化前：（6分）
+void my_strcpy(char* dest, char* src)
+{
+	while (*src != '\0')
+	{
+		*dest = *src;//解引用，数组名是首元素地址
+		src++;
+		dest++;
+	}
+	*dest = *src;//'\0'也要复制过去（可以优化）
+}
+*/
+
+/*（7分）
+void my_strcpy(char* dest, char* src)
+{
+	if (dest != NULL && src != NULL)//判断是否为空指针，是的话不工作(但不会报错)，防止程序崩溃
+	{
+		while (*dest++ = *src++)//'++'是后置的，先"*dest"后'++'，这个复制包括'\0'，这个地方的优化不错
+		{
+			;
+		}
+	}
+}
+*/
+
+/*（8分）
+void my_strcpy(char* dest, char* src)
+{
+	assert(dest != NULL);//断言：括号内表达式为真，无任何问题；为假，报错
+	assert(src != NULL);
+
+	while (*dest++ = *src++)
+	{
+			;
+	}
+}
+//my_strcpy(arr1, NULL);//断言输出：Assertion failed: src != NULL
+*/
+
+//查阅MSDN可知，strcpy定义是：char* strcpy(char* strDestination,const char* strSource)
+// 
+//为什么要加const? src被指定为了const对象(不允许改变)，当下面"*dest++ = *src++"不小心把dest/src写反时能正确报错。
+// const int * p = &num;这样修饰的是*p,也就是说：不能通过p来改变*p(num)的值，但是p可以改变
+// int* const p = &num;这样修饰的是指针变量p,p不能改变，但是*p（num）可以改变
+// 
+//为什么前面是char*?返回的是目标字符串（目的地的地址），这样可以链式访问了，功能更丰富。
+
+//优化后（10分）：
+char* my_strcpy(char* dest, const char* src)//*src（arr2）不可被改变
+{
+	char* ret = dest;
+	assert(dest != NULL);//断言：括号内表达式为真，无任何问题；为假，报错
+	assert(src != NULL);
+	//必要的注释：把src指向的字符串拷贝到dest指向的空间，包含'\0'字符
+	while (*dest++ = *src++)
+	{
+		;
+	}
+	return ret;//不能直接return dest;，因为dest已经改变，所以一开始就把地址保存下来。
+}
+//C语言中的字符串操作可以改变字符串的内容，但是通常情况下字符串的首元素地址不会随着内容的改变而改变
+
+int main()
+{
+	//strcpy:字符串拷贝 strcpy(arr1,arr2); 这里是要写个my_strcpy函数实现strcpy的功能
+	char arr1[] = "############";
+	char arr2[] = "bit";
+	//my_strcpy(arr1, arr2);
+
+	printf("%s\n", my_strcpy(arr1, arr2));//链式访问
+	return 0;
+}

@@ -1,0 +1,27 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+#include<assert.h>//assert头文件
+
+int my_strlen(const char* str)//求arr的长度,需保证*str（arr）不改变,加const
+{
+	int count = 0;
+	assert(str != NULL);//断言，保证指针的有效性
+	while (*str != '\0')
+	{
+		count++;
+		str++;
+	}
+	return count;
+}
+
+int main()
+{
+	char arr[] = "abcdef";
+	int len = my_strlen(arr);
+	printf("%d\n", len);
+	return 0;
+}
+
+//总结摘要：sizeof就是一个计算数据类型所占空间大小的单目运算符，在计算字符串的空间大小时，包含了结束符\0的位置；
+//而strlen是一个计算字符串长度的函数，使用时需要引用头文件#include <string.h>，不包含\0,即计算\0之前的字符串长度。
