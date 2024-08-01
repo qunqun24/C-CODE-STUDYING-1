@@ -1,0 +1,20 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+#include <string.h>//strlen头文件
+
+int main()
+{
+	char a[1000];//signed char范围是：-128-127
+	int i;
+	for (i = 0; i < 1000; i++)
+	{
+		a[i] = -1 - i;
+		//照理说是：        -1,-2,-3,...,-128,-129,...,-1000
+		//由于范围限制变成：-1,-2,-3,...,-128, 127,126,...,0,-1,-2,...
+		//strlen要找'\0','\0'ascii值为0，即找0，0之前（不算本身），有255个数字。
+	}
+	printf("%d", strlen(a));
+	//输出：255
+	return 0;
+}

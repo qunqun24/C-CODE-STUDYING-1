@@ -1,0 +1,18 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdio.h>
+
+void test(void)//明确函数不需要传参加个void更好
+{
+	printf("hehe\n");
+}
+
+int main()
+{
+	int a = 10;//4个字节 调试看内存&a是0a 00 00 00
+	float f = 10.0;//4个字节 调试看内存&f是00 00 20 41 //不同 
+
+	test();
+	test(100);//加了void会报错，不加还是无异常
+	return 0;
+}
